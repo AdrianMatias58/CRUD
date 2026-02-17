@@ -70,7 +70,7 @@ class ProductoController extends Controller
     {
         $pruducto = Producto::find($id);
         try{
-            Producto::update([
+            $pruducto->update([
                 'nombre'=> $request->nombre,
                 'cantidad'=>$request->cantidad,
                 'descripcion'=>$request->descripcion
