@@ -88,6 +88,13 @@ class ProductoController extends Controller
      */
     public function destroy(Producto $producto)
     {
-        //
+        try{
+            Producto::destroy($producto->id);
+            DB::commit();
+            return redirect()->route('producto.index');
+        }catch(Exception $e){
+            DB::rollBack();
+            dd($e->getMessage());
+        }
     }
 }
