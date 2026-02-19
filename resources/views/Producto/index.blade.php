@@ -3,6 +3,17 @@
 
 @section('contenido')
 <div class="container mx-auto p-6">
+    {{-- Mensaje de Éxito Temporal --}}
+    @if (session('success'))
+        <div id="alert-message" class="mb-6 flex items-center p-4 text-green-800 border-t-4 border-green-300 bg-green-50 rounded-lg shadow-sm animate-pulse" role="alert">
+            <svg class="flex-shrink-0 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <div class="ml-3 text-sm font-medium">
+                {{ session('success') }}
+            </div>
+        </div>
+    @endif
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Listado de Productos</h1>
         <a href="{{ route('producto.create') }}"
@@ -52,3 +63,7 @@
     </div>
 </div>
 @endsection
+@push('js')
+    <script src="{{ asset('js/efectoMessage.js') }}"></script>
+    <script>Efecto_Message('alert-message',3000)</script>
+@endpush

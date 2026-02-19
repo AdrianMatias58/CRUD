@@ -26,6 +26,6 @@
             @yield('contenido')
         </div>
     </main>
-
+    @stack('js')
 </body>
 </html>

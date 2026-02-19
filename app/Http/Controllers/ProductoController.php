@@ -40,7 +40,8 @@ class ProductoController extends Controller
                 'descripcion'=>$request->descripcion
             ]);
             DB::commit();
-            return redirect()->route('producto.index');
+            return redirect()->route('producto.index')
+            ->with('success', '¡Producto Creado exitosamente!');
         }catch(Exception $e){
             DB::rollBack();
             dd($e->getMessage());
@@ -76,7 +77,8 @@ class ProductoController extends Controller
                 'descripcion'=>$request->descripcion
             ]);
             DB::commit();
-            return redirect()->route('producto.index');
+            return redirect()->route('producto.index')
+            ->with('success', '¡Producto Actulizado exitosamente!');
         }catch(Exception $e){
             DB::rollBack();
             dd($e->getMessage());
@@ -91,7 +93,8 @@ class ProductoController extends Controller
         try{
             Producto::destroy($producto->id);
             DB::commit();
-            return redirect()->route('producto.index');
+            return redirect()->route('producto.index')
+            ->with('success', '¡Producto Eliminado exitosamente!');
         }catch(Exception $e){
             DB::rollBack();
             dd($e->getMessage());
